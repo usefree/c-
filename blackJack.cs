@@ -14,7 +14,7 @@ namespace firstapp
             Console.Write("\n\n You:\n");
             Game.DisplayCards(Gamer2);
             int i = 2;
-            if (Game.Calculate(Gamer1.Cards) != 21)
+            if (Game.Calculate(Gamer1.Cards) != 21 && Game.Calculate(Gamer2.Cards) != 21)
             {
                 while (Gamer.WantMorecard().KeyChar.ToString() == "y" && i < 8 && Game.Calculate(Gamer2.Cards) < 21)
                 {
@@ -28,12 +28,12 @@ namespace firstapp
                     if (Game.Calculate(Gamer2.Cards) >= 21)
                         break;
                 }
-            }
-            i = 2;
-            while (Game.Calculate(Gamer1.Cards) < 17)
-            {
-                Gamer1.Cards[i] = Game.GetCard();
-                i++;
+                i = 2;
+                while (Game.Calculate(Gamer1.Cards) < 17)
+                {
+                    Gamer1.Cards[i] = Game.GetCard();
+                    i++;
+                }
             }
             Console.Write("\n\n Casino:\n");
             Console.Write($"\nCard0 {Gamer1.Cards[0]}\n");

@@ -9,7 +9,7 @@ namespace firstapp
             Game Game1 = new Game();
             Gamer Gamer1 = new Gamer(1);
             Gamer Gamer2 = new Gamer(0);
-            Console.Write("\n\n Casino:\n");
+            Console.Write("\n\n Gamer1:\n");
             Game.DisplayCards(Gamer1);
             Console.Write("\n\n You:\n");
             Game.DisplayCards(Gamer2);
@@ -21,7 +21,7 @@ namespace firstapp
                     Console.Write("\nGetting more cards\n");
                     Gamer2.Cards[i] = Game.GetCard();
                     i++;
-                    Console.Write("\n\n Casino:\n");
+                    Console.Write("\n\n Gamer1:\n");
                     Game.DisplayCards(Gamer1);
                     Console.Write("\n\n You:\n");
                     Game.DisplayCards(Gamer2);
@@ -35,7 +35,7 @@ namespace firstapp
                     i++;
                 }
             }
-            Console.Write("\n\n Casino:\n");
+            Console.Write("\n\n Gamer1:\n");
             Console.Write($"\nCard0 {Gamer1.Cards[0]}\n");
             Game.DisplayCards(Gamer1);
             Console.Write($"\nTotal: {Game.Calculate(Gamer1.Cards)}\n");
@@ -71,10 +71,10 @@ namespace firstapp
         {
             for (int i = 0; i < 9; i++ )
             {
-                if (GamerLocal.Cards[i] > 0 && (GamerLocal.IsCasino == 0 || i > 0))
+                if (GamerLocal.Cards[i] > 0 && (GamerLocal.IsCas == 0 || i > 0))
                     Console.Write($"Card{i}: {GamerLocal.Cards[i]}\n");
             }
-            if (GamerLocal.IsCasino != 1)
+            if (GamerLocal.IsCas != 1)
                 Console.Write($"\n Total: {Game.Calculate(GamerLocal.Cards)}\n");
         }
     }
@@ -82,18 +82,18 @@ namespace firstapp
     {
         public int[] Cards = new int [9] {0,0,0,0,0,0,0,0,0};
         public static ConsoleKeyInfo Answer;
-        public int IsCasino;
+        public int IsCas;
         public static ConsoleKeyInfo WantMorecard()
         {
             Console.WriteLine("\nWant more cards? (y\\n)\n");
             Answer = Console.ReadKey();
             return Answer;
         }
-        public Gamer(int Casino)
+        public Gamer(int Cas)
         {
             Cards[0] = Game.GetCard();
             Cards[1] = Game.GetCard();
-            IsCasino = Casino;
+            IsCas = Cas;
         }
     }
 }
